@@ -7,9 +7,9 @@ import {
   StatusBar,
   View,
 } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import IconText from '../components/IconText';
 import moment from 'moment';
+import { countryName } from '../utilities/countryName';
 
 const City = ({ weatherData }) => {
   const {
@@ -17,50 +17,54 @@ const City = ({ weatherData }) => {
     imageLayout,
     cityName,
     cityText,
-    countryName,
+    countryNameText,
     populationWrapper,
     populationText,
     rowLayout,
     riseSetWrapper,
     riseSetText,
+    infoWrapper,
+    imageBlur
   } = styles;
 
   const { name, country, population, sunrise, sunset } = weatherData;
   return (
     <SafeAreaView style={container}>
       <ImageBackground
-        source={require('../../assets/city-background.jpg')}
+        source={countryName[country].backgroundImg}
         style={imageLayout}
       >
-        {/* <Text style={[cityName, cityText]}>The Raffles Places</Text> */}
-        <Text style={[cityName, cityText]}>{name}</Text>
-        <Text style={[countryName, cityText]}>{country}</Text>
-        <View style={[populationWrapper, rowLayout]}>
-          <IconText
-            iconName={'user'}
-            iconSize={50}
-            iconColor={'red'}
-            bodyText={population}
-            bodyTextStyles={populationText}
-          />
-        </View>
-        <View style={[riseSetWrapper, rowLayout]}>
-          <IconText
-            iconName={'sunrise'}
-            iconSize={35}
-            iconColor={'white'}
-            // bodyText={'6:57 AM'}
-            bodyText={moment(sunrise).format('h:mm A')}
-            bodyTextStyles={riseSetText}
-          />
-          <IconText
-            iconName={'sunset'}
-            iconSize={35}
-            iconColor={'white'}
-            // bodyText={'7:06 PM'}
-            bodyText={moment(sunset).format('h:mm A')}
-            bodyTextStyles={riseSetText}
-          />
+        <View style={imageBlur} />
+        <View style={infoWrapper}>
+          <Text style={[cityName, cityText]}>{name}</Text>
+          <Text style={[countryNameText, cityText]}>
+            {countryName[country].name}
+          </Text>
+          <View style={[populationWrapper, rowLayout]}>
+            <IconText
+              iconName={'user'}
+              iconSize={50}
+              iconColor={'red'}
+              bodyText={population}
+              bodyTextStyles={populationText}
+            />
+          </View>
+          <View style={[riseSetWrapper, rowLayout]}>
+            <IconText
+              iconName={'sunrise'}
+              iconSize={35}
+              iconColor={'white'}
+              bodyText={moment(sunrise).format('h:mm A')}
+              bodyTextStyles={riseSetText}
+            />
+            <IconText
+              iconName={'sunset'}
+              iconSize={35}
+              iconColor={'white'}
+              bodyText={moment(sunset).format('h:mm A')}
+              bodyTextStyles={riseSetText}
+            />
+          </View>
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -76,16 +80,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cityName: {
-    fontSize: 30,
+    fontSize: 29,
+    paddingTop: 100,
   },
-  countryName: {
-    fontSize: 24,
+  countryNameText: {
+    fontSize: 23,
   },
   cityText: {
     justifyContent: 'center',
     alignSelf: 'center',
     fontWeight: 'bold',
     color: 'white',
+    margin: 8,
   },
   populationWrapper: {
     justifyContent: 'center',
@@ -93,12 +99,11 @@ const styles = StyleSheet.create({
   },
   populationText: {
     fontSize: 25,
-    marginLeft: 7.5,
     color: 'red',
   },
   riseSetWrapper: {
     justifyContent: 'space-around',
-    marginTop: 30,
+    marginTop: 45,
   },
   riseSetText: {
     fontSize: 15,
@@ -107,6 +112,19 @@ const styles = StyleSheet.create({
   rowLayout: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  imageBlur: {
+    flex: 1,
+    marginVertical: 80,
+    marginHorizontal: 15,
+    borderRadius: 20,
+    backgroundColor: 'black',
+    opacity: 0.65,
+  },
+  infoWrapper: {
+    position: 'absolute',
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 });
 export default City;
