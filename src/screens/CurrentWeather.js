@@ -40,10 +40,10 @@ const CurrentWeather = ({ weatherData }) => {
         <Text style={tempStyles}>{`${temp.toFixed(1)}℃`}</Text>
         <Text style={feels}>{`Feels like ${feels_like.toFixed(1)}℃`} </Text>
         <RowText
-          // messageOne={`High: ${Math.round(temp_max)}℃  `}
-          messageOne={`High: ${temp_max.toFixed(1)}℃`}
-          messageTwo={`Low: ${temp_min.toFixed(1)}℃`}
-          // messageTwo={`Low: ${Math.round(temp_min)}℃`}
+          messageOne={`High: ${Math.round(temp_max)}℃  `}
+          // messageOne={`High: ${temp_max.toFixed(1)}℃`}
+          // messageTwo={`Low: ${temp_min.toFixed(1)}℃`}
+          messageTwo={`Low: ${Math.round(temp_min)}℃`}
           containerStyles={highLowWrapper}
           messageOneStyles={highLow}
           messageTwoStyles={highLow}
@@ -63,7 +63,6 @@ const CurrentWeather = ({ weatherData }) => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    // backgroundColor: 'pink',
   },
   container: {
     flex: 1,
