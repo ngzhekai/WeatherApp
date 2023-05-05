@@ -35,7 +35,7 @@ const CurrentWeather = ({ weatherData }) => {
         <Feather
           name={weatherType[weatherCondition]?.icon}
           size={80}
-          color="white"
+          color="black"
         />
         <Text style={tempStyles}>{`${temp.toFixed(1)}℃`}</Text>
         <Text style={feels}>{`Feels like ${feels_like.toFixed(1)}℃`} </Text>
@@ -68,6 +68,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'white',
+    marginVertical: 55,
+    marginHorizontal: 50,
+    borderRadius: 25,
   },
   tempStyles: {
     color: 'black',

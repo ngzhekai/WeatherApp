@@ -41,7 +41,7 @@ const Tabs = ({ weather }) => {
         {() => <CurrentWeather weatherData={weather.list[0]} />}
       </Tab.Screen>
       <Tab.Screen
-        name={'Upcoming'}
+        name={'Weather Forecast'}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather

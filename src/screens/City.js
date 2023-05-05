@@ -24,7 +24,7 @@ const City = ({ weatherData }) => {
     riseSetWrapper,
     riseSetText,
     infoWrapper,
-    imageBlur
+    imageBlur,
   } = styles;
 
   const { name, country, population, sunrise, sunset } = weatherData;

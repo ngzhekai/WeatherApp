@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { weatherType } from '../utilities/weatherType';
-import moment from 'moment'
+import moment from 'moment';
 
 const ListItem = (props) => {
   const { dt_txt, min, max, condition } = props;
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 3,
     backgroundColor: '#B04759',
+    borderRadius: 25,
     // backgroundColor: '#E76161',
   },
   temp: {
